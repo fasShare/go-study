@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"mtcp"
 	"net"
-	"time"
 )
 
 func NewConnection(conn net.Conn) {

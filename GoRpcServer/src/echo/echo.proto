@@ -1,0 +1,16 @@
+package echo;
+
+// go use cc_generic_services option
+option cc_generic_services = true;
+
+message EchoRequest {
+    optional string Content = 1;
+}
+
+message EchoResponse {
+    optional string Content = 1;
+}
+
+service EchoService {
+    rpc Echo(EchoRequest) returns (EchoResponse);
+}
