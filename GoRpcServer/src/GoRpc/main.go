@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	"echo"
+	"flag"
 	"google.golang.org/grpc"
 	"log"
 	"net"
@@ -19,7 +20,12 @@ func (s *myecho) Echo(ctx context.Context, req *echo.EchoRequest) (*echo.EchoRes
 }
 
 func main() {
-	lis, err := net.Listen("tcp", "127.0.0.1:8080")
+	ip := flag.String("ip", "127.0.0.1", "The default ip of server!")
+	port := flag.String("port", "8080", "The defaut port of server!")
+	flag.Parse()
+	log.Printf("%s\n", *ip+":"+*port)
+
+	lis, err := net.Listen("tcp", *ip+":"+*port)
 	if err != nil {
 		log.Fatalf("failed to listen: %v", err)
 	}
